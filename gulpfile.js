@@ -1,11 +1,11 @@
 const del = require('del');
 const gulp = require('gulp');
 const server = require('gulp-webserver');
+const postcss = require('gulp-postcss');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 const rollup = require('rollup').rollup;
 const babel = require('rollup-plugin-babel');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
 
 const path = {
   base: {
@@ -48,7 +48,7 @@ gulp.task('copy', () => {
 });
 
 gulp.task('vue', () => {
-  gulp.src('vue/dist/vue.min.js')
+  gulp.src('vue/dist/vue.js')
     .pipe(gulp.dest('dist/js'));
 });
 

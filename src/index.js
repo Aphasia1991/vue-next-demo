@@ -1,7 +1,11 @@
-new Vue({
-  el: 'body',
+import Send from './component/send.js';
+import Receive from './component/receive.js';
 
-  data: {
-    msg: 'Hello World!'
+new Vue({
+  el: '#app',
+
+  components: {
+    'receive': Receive,
+    'send': Send
   }
 });
