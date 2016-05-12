@@ -2,8 +2,7 @@ const del = require('del');
 const gulp = require('gulp');
 const server = require('gulp-webserver');
 const postcss = require('gulp-postcss');
-const precss = require('precss');
-const autoprefixer = require('autoprefixer');
+const cssnext = require('postcss-cssnext');
 const rollup = require('rollup').rollup;
 const babel = require('rollup-plugin-babel');
 
@@ -11,7 +10,7 @@ const path = {
   base: {
     base: 'src'
   },
-  copy: ['!src/**/*.css', '!src/**/*.js', 'src/**/*'],
+  copy: ['!src/**/*.css', '!src/**/*.js', '!src/component', 'src/**/*'],
   css: ['src/**/*.css'],
   js: ['src/**/*.js'],
   entry: 'src/index.js',
@@ -20,7 +19,7 @@ const path = {
 
 gulp.task('css', () => {
   const cssPlugins = [
-    precss(), autoprefixer({
+    cssnext({
       browsers: ['Android >= 4.0', 'iOS >= 7.0']
     })
   ];

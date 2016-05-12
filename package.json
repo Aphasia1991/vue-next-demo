@@ -9,13 +9,12 @@
   "author": "banricho",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^6.3.6",
     "babel-preset-es2015-rollup": "^1.1.1",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.1.1",
     "gulp-webserver": "^0.9.1",
-    "precss": "^1.4.0",
+    "postcss-cssnext": "^2.5.2",
     "rollup": "^0.26.3",
     "rollup-plugin-babel": "^2.4.0"
   }

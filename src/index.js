@@ -1,11 +1,11 @@
-import Send from './component/send.js';
-import Receive from './component/receive.js';
+import send from './component/send.js';
+import receive from './component/receive.js';
 
 new Vue({
   el: '#app',
 
   components: {
-    'receive': Receive,
-    'send': Send
+    send,
+    receive
   }
 });

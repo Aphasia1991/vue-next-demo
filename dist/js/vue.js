@@ -1083,7 +1083,7 @@
       return;
     }
     if (obj._isVue) {
-      set(obj._data, key, val);
+      "development" !== 'production' && warn('Do not add reactive properties to a Vue instance at runtime - ' + 'delcare it upfront in the data option.');
       return;
     }
     var ob = obj.__ob__;
@@ -1111,17 +1111,16 @@
    * @param {String} key
    */
   function del(obj, key) {
+    if (obj._isVue) {
+      "development" !== 'production' && warn('Do not delete properties on a Vue instance - just set it to null.');
+      return;
+    }
     if (!hasOwn(obj, key)) {
       return;
     }
     delete obj[key];
     var ob = obj.__ob__;
-
     if (!ob) {
-      if (obj._isVue) {
-        delete obj._data[key];
-        obj.$forceUpdate();
-      }
       return;
     }
     ob.dep.notify();
@@ -3970,12 +3969,12 @@ var nodeOps = Object.freeze({
 
   // install platform patch function
   var modules = baseModules.concat(platformModules);
-  Vue.prototype.__patch__ = inBrowser ? createPatchFunction({ nodeOps: nodeOps, modules: modules }) : noop;
+  Vue.prototype.__patch__ = config._isServer ? noop : createPatchFunction({ nodeOps: nodeOps, modules: modules });
 
   // wrap mount
   Vue.prototype.$mount = function (el) {
     this.$el = el && query(el);
-    this._mount();
+    return this._mount();
   };
 
   var decoder = document.createElement('div');
@@ -5338,11 +5337,9 @@ var nodeOps = Object.freeze({
     var compiled = compile(template, options);
     res.render = new Function(compiled.render);
     var l = compiled.staticRenderFns.length;
-    if (l) {
-      res.staticRenderFns = new Array(l);
-      for (var i = 0; i < l; i++) {
-        res.staticRenderFns[i] = new Function(compiled.staticRenderFns[i]);
-      }
+    res.staticRenderFns = new Array(l);
+    for (var i = 0; i < l; i++) {
+      res.staticRenderFns[i] = new Function(compiled.staticRenderFns[i]);
     }
     return cache[template] = res;
   }
@@ -5385,7 +5382,7 @@ var nodeOps = Object.freeze({
         options.staticRenderFns = staticRenderFns;
       }
     }
-    mount.call(this, el);
+    return mount.call(this, el);
   };
 
   /**

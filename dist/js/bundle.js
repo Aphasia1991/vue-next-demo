@@ -2,8 +2,8 @@
 
 var Bus = new Vue();
 
-var Send = Vue.extend({
-  template: '\n  <div @click="sendEvent">Say Hi ?</div>\n  ',
+var send = Vue.extend({
+  template: '\n  <div @click="sendEvent">Say Hi</div>\n  ',
 
   methods: {
     sendEvent: function sendEvent() {
@@ -12,7 +12,7 @@ var Send = Vue.extend({
   }
 });
 
-var Receive = Vue.extend({
+var receive = Vue.extend({
   template: '\n  <div>{{msg}}</div>\n  ',
 
   data: function data() {
@@ -34,7 +34,7 @@ new Vue({
   el: '#app',
 
   components: {
-    'receive': Receive,
-    'send': Send
+    send: send,
+    receive: receive
   }
 });

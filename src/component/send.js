@@ -2,7 +2,7 @@ import Bus from './bus.js';
 
 export default Vue.extend({
   template: `
-  <div @click="sendEvent">Say Hi ?</div>
+  <div @click="sendEvent">Say Hi</div>
   `,
 
   methods: {
