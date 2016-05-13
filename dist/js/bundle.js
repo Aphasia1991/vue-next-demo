@@ -30,11 +30,18 @@ var receive = Vue.extend({
   }
 });
 
+var string = Vue.extend({
+  template: "\n  <div>\n    <span>Hello</span>\n    <span>World</span>\n    <span>!</span>\n  </div>\n  "
+});
+
+Vue.config.preserveWhitespace = false;
+
 new Vue({
   el: '#app',
 
   components: {
     send: send,
-    receive: receive
+    receive: receive,
+    string: string
   }
 });
