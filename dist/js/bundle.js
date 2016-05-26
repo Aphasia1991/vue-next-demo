@@ -36,6 +36,12 @@ var string = Vue.extend({
 
 Vue.config.preserveWhitespace = false;
 
+Vue.component('xtpl', {
+  props: ['index', 'item'],
+
+  template: '#x-tpl'
+});
+
 new Vue({
   el: '#app',
 
@@ -43,5 +49,9 @@ new Vue({
     send: send,
     receive: receive,
     string: string
+  },
+
+  data: {
+    list: ['H', 'i', ',', 'V', 'u', 'e', '!']
   }
 });
