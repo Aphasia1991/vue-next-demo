@@ -42,13 +42,63 @@ Vue.component('xtpl', {
   template: '#x-tpl'
 });
 
+var Tab = Vue.extend({
+  template: '\n  <div>{{ random }}</div>\n  ',
+
+  data: function data() {
+    return {
+      random: ''
+    };
+  },
+
+  created: function created() {
+    this.random = Math.random();
+  }
+});
+
+var Part = Vue.extend({
+  template: '\n  <div>{{ random }}</div>\n  ',
+
+  data: function data() {
+    return {
+      random: ''
+    };
+  },
+
+  created: function created() {
+    this.random = Math.random();
+  }
+});
+
+var keep = Vue.extend({
+  template: '\n  <div>\n    <ul>\n      <li @click="toggle(\'tab\')">tab</li>\n      <li @click="toggle(\'part\')">part</li>\n    </ul>\n\n    <component :is="current" keep-alive></component>\n  </div>\n  ',
+
+  components: {
+    Tab: Tab,
+    Part: Part
+  },
+
+  data: function data() {
+    return {
+      current: 'tab'
+    };
+  },
+
+  methods: {
+    toggle: function toggle(target) {
+      this.current = target;
+    }
+  }
+});
+
 new Vue({
   el: '#app',
 
   components: {
     send: send,
     receive: receive,
-    string: string
+    string: string,
+    keep: keep
   },
 
   data: {
