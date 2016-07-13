@@ -12,6 +12,5 @@
 fork + clone
 cd vue-next-demo
 npm install
-git clone -b next git@github.com:vuejs/vue.git --depth=1
 gulp
 ```

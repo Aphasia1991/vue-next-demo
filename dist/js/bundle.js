@@ -91,6 +91,28 @@ var keep = Vue.extend({
   }
 });
 
+var keepsame = Vue.extend({
+  template: '\n  <div>\n    <ul>\n      <li @click="toggle(\'first\')">first</li>\n      <li @click="toggle(\'second\')">second</li>\n      <li @click="toggle(\'third\')">third</li>\n    </ul>\n\n    <component :is="current" keep-alive></component>\n  </div>\n  ',
+
+  components: {
+    'first': Tab,
+    'second': Tab,
+    'third': Tab
+  },
+
+  data: function data() {
+    return {
+      current: 'first'
+    };
+  },
+
+  methods: {
+    toggle: function toggle(target) {
+      this.current = target;
+    }
+  }
+});
+
 new Vue({
   el: '#app',
 
@@ -98,7 +120,8 @@ new Vue({
     send: send,
     receive: receive,
     string: string,
-    keep: keep
+    keep: keep,
+    keepsame: keepsame
   },
 
   data: {
