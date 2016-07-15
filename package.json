@@ -9,6 +9,9 @@
   "author": "banricho",
   "license": "MIT",
   "devDependencies": {
+    "babel-helper-vue-jsx-merge-props": "^1.0.1",
+    "babel-plugin-syntax-jsx": "^6.8.0",
+    "babel-plugin-transform-vue-jsx": "^1.1.1",
     "babel-preset-es2015-rollup": "^1.1.1",
     "del": "^2.2.0",
     "gulp": "^3.9.1",

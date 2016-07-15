@@ -113,6 +113,45 @@ var keepsame = Vue.extend({
   }
 });
 
+var jsx = Vue.extend({
+  data: function data() {
+    return {
+      msg: 'World!'
+    };
+  },
+
+  methods: {
+    sayHi: function sayHi() {
+      console.log('Hi~');
+    }
+  },
+
+  // render(h) {
+  //   return h('div', {
+  //     on: {
+  //       click: this.sayHi
+  //     }
+  //   }, ['Hello ', this.msg]);
+  // }
+
+  render: function render(h) {
+    return h(
+      'div',
+      {
+        on: {
+          click: this.sayHi
+        }
+      },
+      ['Hello ', this.msg]
+    );
+  }
+
+  // template: `
+  // <div @click="sayHi">Hello {{ msg }}</div>
+  // `
+
+});
+
 new Vue({
   el: '#app',
 
@@ -121,7 +160,8 @@ new Vue({
     receive: receive,
     string: string,
     keep: keep,
-    keepsame: keepsame
+    keepsame: keepsame,
+    jsx: jsx
   },
 
   data: {

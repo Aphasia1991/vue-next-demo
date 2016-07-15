@@ -32,7 +32,8 @@ gulp.task('css', () => {
 gulp.task('js', () => rollup({
   entry: path.entry,
   plugins: [babel({
-    presets: ['es2015-rollup']
+    presets: ['es2015-rollup'],
+    plugins: ["transform-vue-jsx"]
   })]
 }).then(bundle => {
   bundle.write({

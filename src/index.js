@@ -4,6 +4,7 @@ import string from './component/string.js';
 import './component/xtpl.js';
 import keep from './component/keep.js';
 import keepsame from './component/keep-same.js';
+import jsx from './component/jsx.js';
 
 new Vue({
   el: '#app',
@@ -13,7 +14,8 @@ new Vue({
     receive,
     string,
     keep,
-    keepsame
+    keepsame,
+    jsx
   },
 
   data: {
