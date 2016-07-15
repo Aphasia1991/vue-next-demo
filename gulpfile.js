@@ -46,7 +46,12 @@ gulp.task('copy', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('server', ['css', 'js', 'copy'], () => {
+gulp.task('vue', () => {
+  gulp.src(['vue/dist/vue.js', 'vue/dist/vue.min.js'])
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('server', ['css', 'js', 'copy', 'vue'], () => {
   gulp.src('dist')
     .pipe(server({
       host: '127.0.0.1',
